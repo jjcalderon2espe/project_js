@@ -32,3 +32,14 @@ function verUsuarios() {
     }
   }
 }
+
+function agregarUsuario() {
+  let nombre = prompt("Ingrese el nombre del nuevo usuario:");
+  if (nombre) {
+    let id = usuarios.length > 0 ? usuarios[usuarios.length - 1].id + 1 : 1;
+    usuarios.push({ id: id, nombre: nombre, tareas: [] });
+    console.log("Usuario agregado correctamente.");
+  } else {
+    console.log("Nombre inválido.");
+  }
+}
