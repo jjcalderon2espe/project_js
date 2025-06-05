@@ -21,3 +21,14 @@ function obtenerUsuarioPorId(id) {
   }
   return null;
 }
+
+function verUsuarios() {
+  if (usuarios.length === 0) {
+    console.log("No hay usuarios registrados.");
+  } else {
+    console.log("Usuarios:");
+    for (let usuario of usuarios) {
+      console.log(`ID: ${usuario.id}, Nombre: ${usuario.nombre}`);
+    }
+  }
+}
