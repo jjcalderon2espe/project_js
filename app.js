@@ -12,3 +12,12 @@ function mostrarMenu() {
   console.log("6. Eliminar una tarea");
   console.log("7. Salir del programa");
 }
+
+function obtenerUsuarioPorId(id) {
+  for (let usuario of usuarios) {
+    if (usuario.id === id) {
+      return usuario;
+    }
+  }
+  return null;
+}
