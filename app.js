@@ -158,3 +158,5 @@ function iniciarPrograma() {
     }
   } while (opcion !== 7);
 }
+
+console.log("Escribe iniciarPrograma(); en la consola para comenzar.");
