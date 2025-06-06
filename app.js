@@ -61,3 +61,19 @@ function verTareasUsuario() {
     console.log("Usuario no encontrado.");
   }
 }
+
+function agregarTarea() {
+  let id = parseInt(prompt("Ingrese el ID del usuario:"));
+  let usuario = obtenerUsuarioPorId(id);
+  if (usuario) {
+    let descripcion = prompt("Ingrese la descripción de la tarea:");
+    if (descripcion) {
+      usuario.tareas.push({ descripcion: descripcion, estado: "pendiente" });
+      console.log("Tarea agregada.");
+    } else {
+      console.log("Descripción inválida.");
+    }
+  } else {
+    console.log("Usuario no encontrado.");
+  }
+}
