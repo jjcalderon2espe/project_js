@@ -125,3 +125,36 @@ function eliminarTarea() {
     console.log("Usuario no encontrado.");
   }
 }
+
+function iniciarPrograma() {
+  let opcion;
+  do {
+    mostrarMenu();
+    opcion = parseInt(prompt("Seleccione una opción:"));
+    switch (opcion) {
+      case 1:
+        verUsuarios();
+        break;
+      case 2:
+        agregarUsuario();
+        break;
+      case 3:
+        verTareasUsuario();
+        break;
+      case 4:
+        agregarTarea();
+        break;
+      case 5:
+        marcarTareaCompletada();
+        break;
+      case 6:
+        eliminarTarea();
+        break;
+      case 7:
+        console.log("Saliendo del programa...");
+        break;
+      default:
+        console.log("Opción inválida.");
+    }
+  } while (opcion !== 7);
+}
