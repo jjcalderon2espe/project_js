@@ -77,3 +77,27 @@ function agregarTarea() {
     console.log("Usuario no encontrado.");
   }
 }
+
+function marcarTareaCompletada() {
+  let id = parseInt(prompt("Ingrese el ID del usuario:"));
+  let usuario = obtenerUsuarioPorId(id);
+  if (usuario) {
+    if (usuario.tareas.length === 0) {
+      console.log("Este usuario no tiene tareas.");
+      return;
+    }
+    for (let i = 0; i < usuario.tareas.length; i++) {
+      let tarea = usuario.tareas[i];
+      console.log(`${i + 1}. ${tarea.descripcion} - ${tarea.estado}`);
+    }
+    let indice = parseInt(prompt("Ingrese el número de la tarea a marcar como completada:")) - 1;
+    if (indice >= 0 && indice < usuario.tareas.length) {
+      usuario.tareas[indice].estado = "completada";
+      console.log("Tarea marcada como completada.");
+    } else {
+      console.log("Índice inválido.");
+    }
+  } else {
+    console.log("Usuario no encontrado.");
+  }
+}
