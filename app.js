@@ -43,3 +43,21 @@ function agregarUsuario() {
     console.log("Nombre inválido.");
   }
 }
+
+function verTareasUsuario() {
+  let id = parseInt(prompt("Ingrese el ID del usuario:"));
+  let usuario = obtenerUsuarioPorId(id);
+  if (usuario) {
+    if (usuario.tareas.length === 0) {
+      console.log("Este usuario no tiene tareas.");
+    } else {
+      console.log(`Tareas de ${usuario.nombre}:`);
+      for (let i = 0; i < usuario.tareas.length; i++) {
+        let tarea = usuario.tareas[i];
+        console.log(`${i + 1}. ${tarea.descripcion} - ${tarea.estado}`);
+      }
+    }
+  } else {
+    console.log("Usuario no encontrado.");
+  }
+}
