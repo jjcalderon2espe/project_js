@@ -1,3 +1,8 @@
+/* 
+Integrantes del grupo:
+- Dalinda Molina
+- Jerson Calderón
+*/
 alert("Abre la consola (F12) para usar la aplicación.\nLuego escribe iniciarPrograma(); para comenzar.");
 
 let usuarios = [];
@@ -28,14 +33,22 @@ function verUsuarios() {
   } else {
     console.log("Usuarios:");
     for (let usuario of usuarios) {
-      console.log(`ID: ${usuario.id}, Nombre: ${usuario.nombre}`);
+      console.log("Usuarios:");
+      for (let usuario of usuarios) {
+        for (let clave in usuario) {
+          if (clave !== "tareas") {
+            console.log(`${clave.toUpperCase()}: ${usuario[clave]}`);
+          }
+        }
+        console.log("---");
+      }
     }
   }
 }
 
 function agregarUsuario() {
   let nombre = prompt("Ingrese el nombre del nuevo usuario:");
-  if (nombre) {
+  if (nombre && nombre.trim() !== "") {
     let id = usuarios.length > 0 ? usuarios[usuarios.length - 1].id + 1 : 1;
     usuarios.push({ id: id, nombre: nombre, tareas: [] });
     console.log("Usuario agregado correctamente.");
@@ -46,15 +59,21 @@ function agregarUsuario() {
 
 function verTareasUsuario() {
   let id = parseInt(prompt("Ingrese el ID del usuario:"));
+  if (isNaN(id)) {
+    console.log("ID inválido.");
+    return;
+  }
   let usuario = obtenerUsuarioPorId(id);
   if (usuario) {
     if (usuario.tareas.length === 0) {
       console.log("Este usuario no tiene tareas.");
     } else {
       console.log(`Tareas de ${usuario.nombre}:`);
-      for (let i = 0; i < usuario.tareas.length; i++) {
+      let i = 0;
+      while (i < usuario.tareas.length) {
         let tarea = usuario.tareas[i];
         console.log(`${i + 1}. ${tarea.descripcion} - ${tarea.estado}`);
+        i++;
       }
     }
   } else {
@@ -64,6 +83,10 @@ function verTareasUsuario() {
 
 function agregarTarea() {
   let id = parseInt(prompt("Ingrese el ID del usuario:"));
+  if (isNaN(id)) {
+    console.log("ID inválido.");
+    return;
+  }
   let usuario = obtenerUsuarioPorId(id);
   if (usuario) {
     let descripcion = prompt("Ingrese la descripción de la tarea:");
@@ -80,6 +103,10 @@ function agregarTarea() {
 
 function marcarTareaCompletada() {
   let id = parseInt(prompt("Ingrese el ID del usuario:"));
+  if (isNaN(id)) {
+    console.log("ID inválido.");
+    return;
+  }
   let usuario = obtenerUsuarioPorId(id);
   if (usuario) {
     if (usuario.tareas.length === 0) {
@@ -104,6 +131,10 @@ function marcarTareaCompletada() {
 
 function eliminarTarea() {
   let id = parseInt(prompt("Ingrese el ID del usuario:"));
+  if (isNaN(id)) {
+    console.log("ID inválido.");
+    return;
+  }
   let usuario = obtenerUsuarioPorId(id);
   if (usuario) {
     if (usuario.tareas.length === 0) {
